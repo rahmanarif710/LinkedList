@@ -94,6 +94,31 @@ public class linkedList1 {
     }
 
     public void sisipDataUrut(int data) {
+        //membuat node baru dan data akan tersimpan dalam pointer.data
+        buatNode(data);
+        //membuat node temp untuk menyimpan pointer, mengapa perlu buat node temp?
+        //agar node pointer tidak di otak atik jadi yang di otak atik node tempnya
+        Node temp = pointer;
+        while (temp != null) {
+            //membuat node baru yang merujuk setelah temp
+            Node baru = temp.next;
+            while (baru != null) {
+                //jika data yang ada di temp kurang dari data baru
+                if (temp.data < baru.data) {
+                    // maka simpanlah data baru ke dalam variabel temporary
+                    int temporary = baru.data;
+                    // data baru akan menjadi data pada temp
+                    baru.data = temp.data;
+                    // data yang ada di temp akan menjadi nilai dari temporary
+                    temp.data = temporary;
+                }
+                // node akan bergeser mengikuti perulangan
+                baru = baru.next;
+            }
+            // node akan bergeser mengikuti perulangan
+            temp = temp.next;
+        }
+
         //lengkapi bagian ini sisipDataUrut
         //yang bisa kirim ke email ku : m.ec2.a.najib@gmail.com
         //+10 buat Single dan double Linked List
